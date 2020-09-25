@@ -35,7 +35,6 @@ void printIntArray(int size, int arr[]){
 
 const int SIZE = 100;
 
-
 int main(int argc, char const *argv[]){
     int x[SIZE];
 
