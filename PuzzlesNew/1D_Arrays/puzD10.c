@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #include <time.h>
 
+/*
+ * Write a function that fills an array with a sequence of double precision
+ * floats. Each float is greater than its predecessor by an average amount avg,
+ * but may be greater or less than avg by up to but not including an amount dev.
+ * In other words, the amount inc added to one element to get the next is in the
+ * range (avg-dev)< inc < (avg+dev).
+ *
+ * Start the array with a value (avg-dev)< arr[0]< (avg+dev).
+ */
+
 double randDouble(double min, double max){
     return (double)rand() * (max-min)/((double)RAND_MAX + 1) + min;
 }
