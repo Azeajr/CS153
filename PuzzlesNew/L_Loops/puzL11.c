@@ -2,7 +2,7 @@
 
 int main(int argc, char *argv[]){
     int n;
-    printf("Enter n: a");
+    printf("Enter n: ");
     scanf(" %d",&n);
 
 
