@@ -4,6 +4,9 @@
  * seems like what this puzzle was going for.
  * This would require a cast using (int **)
  * on the function call
+ *
+ * I was wrong about the previous statement.  The purpose was to exhibit the
+ * structureof arrays in memory.
  */
 void print2DArray( int *x, int nrows, int ncols){
     int r,c;
