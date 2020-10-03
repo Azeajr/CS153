@@ -1,7 +1,7 @@
 #include <stdio.h>
 /*
  * Write a function that prints the elements of a 2D integer array. Write one
- * row the the array per line on the screen. 
+ * row the array per line on the screen.
  */
 
 void print2DArray(int nrows, int ncols, int x[nrows][ncols]){
