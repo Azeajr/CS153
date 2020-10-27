@@ -7,7 +7,7 @@ void print2DArray(int nrows, int ncols, int x[nrows][ncols]){
     int r, c;
     for(r = 0; r < nrows; r++){
         for(c = 0; c < ncols; c++){
-            printf("%d ", x[r][c]);
+            printf("%4d ", x[r][c]);
         }
         printf("\n");
     }
