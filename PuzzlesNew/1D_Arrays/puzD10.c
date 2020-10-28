@@ -13,29 +13,51 @@
  */
 
 double randDouble(double min, double max){
-    return (double)rand() * (max-min)/((double)RAND_MAX + 1) + min;
+    return (max-min) * (rand()/(RAND_MAX+1.0)) + min;
+    /*
+     * I like the above because it groups rand and RAND_MAX together
+     * return (double)rand() * (max-min)/((double)RAND_MAX + 1) + min;
+     */
 }
 
-int fillDoubleArrayRandomAscending(int size, double arr[], double avg, double dev){
-    srand(time(NULL));
+int randInt(int min, int max){
+    return ((long)rand() * (max-min+1))/((long)RAND_MAX+1) + min;
+}
 
-    *arr = randDouble(avg-dev, avg+dev);
+void fillDoubleArrayRandomAscending(int size, double arr[], double avg, double dev){
+    /*
+     * I would probably rewrite these next five lines as its own function
+     */
+    double inc = randDouble(0.0, dev);
+
+    if(randInt(0,1)){
+        inc = -inc;
+    }
+
+    arr[0] = avg + inc;
 
     int i;
     for(i = 1; i < size; i++){
-        *(arr + i) = *(arr + i - 1) + randDouble(avg-dev, avg+dev);
+        inc = randDouble(0.0, dev);
+
+        if(randInt(0,1)){
+            inc = -inc;
+        }
+
+        arr[i] = arr[i-1] + avg + inc;
     }
 }
 
-void printDoubleArray(int size, double arr[]){
+void printDoubleArray(int size, double x[]){
     int i;
     for(i = 0; i < size; i++){
-        if(i%5 == 4){
-            printf("%lf\n", *(arr + i));
-        }else{
-            printf("%lf ", *(arr + i));
+        if(i % 5 == 4){
+            printf("%8.4lf\n", x[i]);
+        } else {
+            printf("%8.4lf ", x[i]);
         }
     }
+    printf("\n");
 }
 
 const int SIZE = 100;
