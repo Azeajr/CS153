@@ -1,12 +1,32 @@
 #include <stdio.h>
-
+/*
+ * Write function stringSubset(char *sub, char *set) that returns 1 if every
+ * character in the string *sub is also contained in the string *set; otherwise
+ * it returns 0
+ */
 int stringSubset( char const *sub, char const *set){
     char const *u, *e;
+    char const *p, *s;
+    /*
+     * Teachers solution seems much simpler than mine.
+     * for ( u=sub; *u; u++ ){
+     *     for ( e=set; *e && *e != *u; e++);
+     *     if ( *e == '\0' ) return 0;
+     * }
+     * return 1;
+    */
+
     for(u = sub; *u; u++){
         for(e = set; *e; e++){
-            
+            if(*u == *e){
+                break;
+            }
+        }
+        if(*u != *e){
+            return 0;
         }
     }
+    return 1;
 }
 
 int main(int argc, char *argv[])
