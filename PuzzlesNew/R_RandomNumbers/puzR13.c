@@ -37,19 +37,41 @@ const int maxWordLength = 7;
 const int maxLineLength = 50;
 const int maxSenLength = 20;
 
-int word()
+char* word(int wordLen, int cap){
+    char temp[worLen + 1];
 
-void sentence(int startPos){
-    int wordLen, senLen;
+    if(cap){
+        temp[0] = randCharFreq() - ' ';
+    }else{
+        temp[0] = randCharFreq();
+    }
+
+    int i;
+    for(i = 1; i < worLen; i++){
+        temp[i] = randCharFreq();
+    }
+
+    temp[wordLen] = '\0'
+
+    return temp;
+}
+
+char* sentence(int startPos){
+    int senLen, wordLen;
     senLen = randInt(1,maxSenLength);
+    char temp[senLen*maxWordLength];
+
 
     int i, j;
     for(i = 0; i < senLen; i++){
-        wordLen = randInt(1,maxWordLength);
-        if(startPos%maxLineLength + wordLen)
+        worLen = randInt(1,maxWordLength);
 
-        for(j = 0; j < wordLen; j++){
-            printf("%c", randCharFreq());
+
+
+        for(j = 0; j < senLen*maxWordLength]; j++){
+            if(startPos % maxLineLength + wordLen > maxLineLength && i == 0){
+                char *newWord = word(wordLen, 1);
+            }
         }
     }
 }
