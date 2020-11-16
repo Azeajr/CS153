@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 
+#define TRUE 1
+#define FALSE 0
+
 int randInt(int min, int max){
     return ((long)rand() * (max-min+1))/((long)RAND_MAX+1) + min;
 }
@@ -37,8 +40,10 @@ const int maxWordLength = 7;
 const int maxLineLength = 50;
 const int maxSenLength = 20;
 
-char* word(int wordLen, int cap){
-    char temp[worLen + 1];
+char* randWord(int wordLen, int cap){
+    //char temp[wordLen + 1];
+    // Used this because the array needed to be allocated in the heap so that it continues to exist after the function ends
+    char *temp = malloc((wordLen+1) * sizeof(char));
 
     if(cap){
         temp[0] = randCharFreq() - ' ';
@@ -47,31 +52,81 @@ char* word(int wordLen, int cap){
     }
 
     int i;
-    for(i = 1; i < worLen; i++){
+    for(i = 1; i < wordLen; i++){
         temp[i] = randCharFreq();
     }
 
-    temp[wordLen] = '\0'
+    temp[wordLen] = '\0';
 
     return temp;
 }
 
-char* sentence(int startPos){
-    int senLen, wordLen;
-    senLen = randInt(1,maxSenLength);
-    char temp[senLen*maxWordLength];
+char* randSentence(int senLen){
+    int wordLen;
+
+    char *temp = malloc((senLen*maxWordLength+1) * sizeof(char));
 
 
-    int i, j;
+
+    int i, j, index = 0;
     for(i = 0; i < senLen; i++){
-        worLen = randInt(1,maxWordLength);
-
-
-
-        for(j = 0; j < senLen*maxWordLength]; j++){
-            if(startPos % maxLineLength + wordLen > maxLineLength && i == 0){
-                char *newWord = word(wordLen, 1);
+        wordLen = randInt(1,maxWordLength);
+        if(i == 0){
+            char *newWord = randWord(wordLen, TRUE);
+            for(j = 0; j < wordLen; j++){
+                temp[index++]=newWord[j];
             }
+            free(newWord);
+        }else{
+            int capitol = !randInt(0,15);
+            char *newWord = randWord(wordLen, capitol);
+            for(j = 0; j < wordLen; j++){
+                temp[index++]=newWord[j];
+            }
+            free(newWord);
+        }
+        if(i == senLen-1){
+            temp[index++] = '.';
+            temp[index++] = '\0';
+        }else{
+            temp[index++] = ' ';
         }
     }
+
+    return temp;
 }
+
+char* randParagraph(int paraLen){
+    char *temp = malloc((paraLen*(maxSenLength*maxWordLength+maxSenLength)) * sizeof(char));
+
+    char *newSentence;
+    int senLen;
+
+    int i, count = 0;
+    for(i = 0; i < paraLen; i++){
+        senLen = randInt(1,maxSenLength);
+                
+
+    }
+
+
+    return temp;
+}
+
+int main(int argc, char const *argv[])
+{
+    srand(time(NULL));
+
+    randParagraph(5);
+
+    printf("\n\n");
+
+    //char * Tst  = randSentence(5);
+
+    //printf("%s", Tst);
+
+    //free(Tst);
+    
+    return 0;
+}
+
