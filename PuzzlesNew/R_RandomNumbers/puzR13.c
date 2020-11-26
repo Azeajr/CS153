@@ -105,6 +105,30 @@ char* randParagraph(int paraLen){
     int i, count = 0;
     for(i = 0; i < paraLen; i++){
         senLen = randInt(1,maxSenLength);
+        int j;
+        for(j = 0; j < senLen; j++){
+            int wordLen = randInt(1,maxWordLength);
+            if(i == 0){
+                char *newWord = randWord(wordLen, TRUE);
+                for(j = 0; j < wordLen; j++){
+                    temp[count++]=newWord[j];
+                }
+                free(newWord);
+            }else{
+                int capitol = !randInt(0,15);
+                char *newWord = randWord(wordLen, capitol);
+                for(j = 0; j < wordLen; j++){
+                    temp[count++]=newWord[j];
+                }
+                free(newWord);
+            }
+            if(i == senLen-1){
+                temp[count++] = '.';
+                temp[count++] = '\0';
+            }else{
+                temp[count++] = ' ';
+            }
+        }
                 
 
     }
