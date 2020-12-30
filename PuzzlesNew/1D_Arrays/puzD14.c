@@ -1,3 +1,9 @@
+/*
+ * Write a function that operates on two arrays of double precision floats, a 
+ * and b. Both arrays are the same size. For each index j, compute 
+ * (a[j]-b[j])^2 and add that to a sum.
+ */
+
 #include <stdio.h>
 
 double squareDiffArray(int size, double a[], double b[]){
