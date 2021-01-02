@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void fillArray(int size, int arr[], int start){
+void fillArrayDescending(int size, int arr[], int start){
     int i;
     for(i = 0; i < size; i++){
         arr[i] = start - i;
@@ -19,7 +19,7 @@ const int SIZE = 100;
 
 int main(int argc, char *argv[]){
     int x[SIZE];
-    fillArray(SIZE, x, 7);
+    fillArrayDescending(SIZE, x, 7);
     printArray(SIZE, x);
 
     printf("\n");
